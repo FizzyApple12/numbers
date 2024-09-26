@@ -36,8 +36,14 @@ const generateNumberExtension = (number: string, i: number): string => {
 		else return number;
 	}
 
-	if (i < 10) return `${number}0${i}`;
-	else return `${number}${i}`;
+	// if (i < 10) return `${number}0${i}`;
+	// else return `${number}${i}`;
+
+	for (let j = 0; j < i; j++) {
+		number += `${(Math.random() * 10).toFixed(0)}`;
+	}
+
+	return number;
 };
 
 const Page: FC = () => {
@@ -85,33 +91,31 @@ const Page: FC = () => {
 							className="flex flex-col gap-2 overflow-scroll py-2"
 							tabIndex={-1}
 						>
-							{mapArray.map((_, i) => (
-								<div
-									key={i}
-									className="flex-grow flex flex-row items-center justify-between mx-2 break-words max-w-full"
-								>
-									<Button
-										variant={"ghost"}
-										className="flex-grow flex flex-row items-center justify-between max-w-full h-auto"
-										onClick={() =>
-											router.push(
-												`/${generateNumberExtension(
-													baseNumber,
-													i
-												)}`
-											)
-										}
+							{mapArray.map((_, i) => {
+								const value = generateNumberExtension(
+									baseNumber,
+									i
+								);
+								return (
+									<div
+										key={i}
+										className="flex-grow flex flex-row items-center justify-between mx-2 break-words max-w-full"
 									>
-										<span className="text-left max-w-[calc(100%-1rem-24px)] text-wrap break-words">
-											{generateNumberExtension(
-												baseNumber,
-												i
-											)}
-										</span>
-										<ArrowRight className="min-w-[24px]" />
-									</Button>
-								</div>
-							))}
+										<Button
+											variant={"ghost"}
+											className="flex-grow flex flex-row items-center justify-between max-w-full h-auto"
+											onClick={() =>
+												router.push(`/${value}`)
+											}
+										>
+											<span className="text-left max-w-[calc(100%-1rem-24px)] text-wrap break-words">
+												{value}
+											</span>
+											<ArrowRight className="min-w-[24px]" />
+										</Button>
+									</div>
+								);
+							})}
 						</div>
 					</CardContent>
 				</Card>
