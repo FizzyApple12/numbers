@@ -59,6 +59,13 @@ const Page: FC = () => {
 
 							setBaseNumber(filterNumber(newValue));
 						}}
+						onKeyDown={(e) => {
+							if (e.key == "Enter") {
+								router.push(
+									`/${generateNumberExtension(baseNumber, 0)}`
+								);
+							}
+						}}
 					/>
 				</div>
 				<Card
