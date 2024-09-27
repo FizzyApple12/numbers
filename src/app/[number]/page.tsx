@@ -74,7 +74,7 @@ const Page: FC<{
 							onClick={() => askAboutNumber()}
 							disabled={loadingFacts}
 						>
-							Learn Something About This Number
+							Learn something about this number
 							{loadingFacts ? (
 								<LoaderCircle className="ml-2 animate-spin" />
 							) : (
@@ -91,7 +91,7 @@ const Page: FC<{
 				<DialogContent className="!w-[90vw] md:!w-[50vw] max-w-none">
 					<DialogHeader className="!w-[calc(90vw-48px)] md:!w-[calc(50vw-48px)]">
 						<DialogTitle className="text-wrap break-words">
-							AI slop about the number {params.number}
+							LLM slop about the number {params.number}
 						</DialogTitle>
 						<DialogDescription className="text-wrap max-h-[75vh] overflow-y-scroll">
 							{facts.split("\n").map((v, i) => (
